@@ -1,3 +1,7 @@
 sudo mn --custom ~/topologia.py --topo tp2,switches --mac --arp --switch ovsk --controller remote
 
 python3 pox.py log.level --DEBUG openflow.of_01 forwarding.l2_learning controlador
+
+crear server:  host_4 iperf -s &> h4.log &
+
+cliente: host_3 iperf -t 20 -c 10.0.0.4

@@ -26,5 +26,3 @@ class Topologia(Topo):
 
 
 topos = { "tp2": Topologia }
-
-#Topologia se grafica bien, a partir de 5 switches empieza a fallar pingall (usando controlador pox, con controlador default anda bien)
