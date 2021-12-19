@@ -6,10 +6,10 @@ python3 pox.py log.level --DEBUG openflow.of_01 forwarding.l2_learning controlad
 funcionamiento correcto:
 
 crear server:  xterm host_1
-               iperf -s -p 5001
+               iperf -s
 
 cliente: xterm host_3
-         iperf -c 10.0.0.1 -p 5001 -t 10
+         iperf -c 10.0.0.1 -t 10
 
 regla 1:
 
