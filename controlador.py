@@ -52,7 +52,7 @@ class Firewall(EventMixin):
         openflow_packet = of.ofp_flow_mod()
         openflow_packet.match = bloque
         event.connection.send(openflow_packet)
-        log.debug("Firewall rules 1 installed on %s", dpidToStr(event.dpid))
+        log.debug("Firewall rules 2 installed on %s", dpidToStr(event.dpid))
 
     def regla_3(self,event):
         #Los hosts 1 y 2 no pueden comunicarse
