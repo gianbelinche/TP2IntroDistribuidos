@@ -62,6 +62,13 @@ class Firewall(EventMixin):
         openflow_packet = of.ofp_flow_mod()
         openflow_packet.match = bloque
         event.connection.send(openflow_packet)
+
+        bloque = of.ofp_match()
+        bloque.dl_src = EthAddr('00:00:00:00:00:02')
+        bloque.dl_dst = EthAddr('00:00:00:00:00:01')
+        openflow_packet = of.ofp_flow_mod()
+        openflow_packet.match = bloque
+        event.connection.send(openflow_packet)
         log.debug("Firewall rules 3 installed on %s", dpidToStr(event.dpid))
 
 def launch():
