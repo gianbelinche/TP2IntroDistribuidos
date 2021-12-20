@@ -38,7 +38,8 @@ class Ejemplo(Topo):
         h2 = self.addHost("host_2")
         h3 = self.addHost("host_3")
 
-        # Add links between switches and hosts self.addLink(s1, s2)
+        # Add links between switches and hosts 
+        self.addLink(s1, s2)
         self.addLink(s1, h1)
         self.addLink(s1, h2)
         self.addLink(s2, h3)
