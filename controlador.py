@@ -31,6 +31,7 @@ class Firewall(EventMixin):
         bloque.tp_dst = 80 #Para poder seleccionar que el puerto sea el 80, deben si o si especificarse las capas anteriores, es decir, IP y TCP
         openflow_packet = of.ofp_flow_mod()
         openflow_packet.match = bloque
+        #Nota: Al no especificar una accion a realizar tras el match, el paquete sera descartado
         event.connection.send(openflow_packet)
 
         bloque = of.ofp_match()
