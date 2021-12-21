@@ -1,25 +1,29 @@
 # Trabajo Practico 2 - Openflow Lite
 
-Este trabajo practico consistio en generar una topología usando mininet sobre la cual se realizaran diferentes ensayos. 
+El presente trabajo practico consistio en la realización de una topología y firewall, sobre los cuales se realizaron diferentes ensayos.
 
-Tambien pidió implementar un Firewall usando POX con las siguientes reglas definida:
+Para la implementación de la topología se utilizó la herramienta mininet, mientras que para la la implementación del firewall se utilizó la API POX para programación de controladores de SDNs de Python.
+
+Las reglas implementadas fueron las siguientes:
 
 1. Se deben descartar todos los mensajes cuyo puerto destino sea 80.
 2. Se deben descartar todos los mensajes que provengan del host 1, tengan como puerto destino el 5001, y esten
 utilizando el protocolo UDP.
-3. Se debe elegir dos hosts cualquiera, y los mismos no deben poder comunicarse de ninguna forma
+3. Se debe elegir dos hosts cualquiera, y los mismos no deben poder comunicarse de ninguna forma. En este caso se eligieron los hosts 1 y 2 para la ejecución de la regla.
 
-## Levantando el Firewall
+## Levantando el Controlador
 
-Antes de levantar la topología, se debe levantar el Firewall de la siguiente forma:
+Antes de levantar la topología se debe levantar el controlador que es el encargado de comunicar las reglas de firewall a todos los switches.
+
+Para levantar el controlador se debe ejecutar el siguiente comando:
 
 ```
 $ python3 pox.py log.level --DEBUG openflow.of_01 forwarding.l2_learning controlador
 ```
 
-## Levantando la topología
+## Levantando la Topología
 
-Una vez levantado el Firewall, se debera correr el siguiente comando en otra consola para levantar la topología:
+Una vez levantado el controlador, se debera correr el siguiente comando en otra consola para levantar la topología:
 
 ```
 $ sudo mn --custom ./topologia.py --topo tp2,switches=2 --mac --arp --switch ovsk --controller remote
@@ -30,7 +34,8 @@ Es importante que luego del parámetro --custom se ponga la ubicación del archi
 Para especificar la cantidad de switches luego del parametro `--topo tp2,..` despues de la coma se debe ingresar la cantidad de switches que se desee tener, el ejemplo mostrado creará 2 switches.
 
 ## Pruebas
-Una vez levantado el Firewall y la topología para probar el correcto funcionamiento de ambos se pueden hacer las siguiente pruebas:
+
+Una vez levantados el controlador y la topología, se pueden ejecutar las siguiente pruebas para validar el correcto funcionamiento de ambos:
 
 ### Regla 1
 
