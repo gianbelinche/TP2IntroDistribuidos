@@ -9,7 +9,7 @@ crear server:  xterm host_1
                iperf -s
 
 cliente: xterm host_3
-         iperf -c 10.0.0.1 -t 10
+         iperf -c 10.0.0.1 -t 1
 
 regla 1:
 
@@ -17,7 +17,7 @@ crear server:  xterm host_3
                iperf -s -p 80
 
 cliente: xterm host_4
-         iperf -c 10.0.0.3 -p 80 -t 10
+         iperf -c 10.0.0.3 -p 80 -t 1
 
 regla_2:
 
@@ -25,7 +25,7 @@ crear server:  xterm host_3
                iperf -s -p 5001 -u
 
 cliente: xterm host_1
-         iperf -c 10.0.0.3 -p 5001 -u -t 10
+         iperf -c 10.0.0.3 -p 5001 -u -t 1
 
 
 regla_3:
@@ -34,5 +34,5 @@ crear server:  xterm host_1
                iperf -s
 
 cliente: xterm host_2
-         iperf -c 10.0.0.1 -t 10
+         iperf -c 10.0.0.1 -t 1
 

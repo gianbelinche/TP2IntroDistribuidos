@@ -54,12 +54,12 @@ mininet> xterm host_4
 3. En la otra terminal usar el comando `iperf` en modo client con la dirección IP del server (10.0.0.X) en este caso suponiendo que el server fue levantado en el host 3 la direccion IP sería 10.0.0.3:
 
 ```
-# iperf -c 10.0.0.3 -t 1
+# iperf -c 10.0.0.3 -p 80 -t 1
 ```
 
 4. El resultado debería ser el siguiente:
 ```
-# iperf -c 10.0.0.3
+# iperf -c 10.0.0.3 -p 80 -t 1
 connect failed: Connection refused
 ```
 
