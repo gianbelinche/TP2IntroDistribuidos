@@ -22,12 +22,12 @@ $ python3 pox.py log.level --DEBUG openflow.of_01 forwarding.l2_learning control
 Una vez levantado el Firewall, se debera correr el siguiente comando en otra consola para levantar la topología:
 
 ```
-$ sudo mn --custom ./topologia.py --topo tp2,4 --mac --arp --switch ovsk --controller remote
+$ sudo mn --custom ./topologia.py --topo tp2,switches=2 --mac --arp --switch ovsk --controller remote
 ```
 
 Es importante que luego del parámetro --custom se ponga la ubicación del archivo de la topología.
 
-Para especificar la cantidad de switches luego del parametro `--topo tp2,..` despues de la coma se debe ingresar la cantidad de switches que se desee tener, el ejemplo mostrado creará 4 switches.
+Para especificar la cantidad de switches luego del parametro `--topo tp2,..` despues de la coma se debe ingresar la cantidad de switches que se desee tener, el ejemplo mostrado creará 2 switches.
 
 ## Pruebas
 Una vez levantado el Firewall y la topología para probar el correcto funcionamiento de ambos se pueden hacer las siguiente pruebas:
@@ -54,7 +54,7 @@ mininet> xterm host_4
 3. En la otra terminal usar el comando `iperf` en modo client con la dirección IP del server (10.0.0.X) en este caso suponiendo que el server fue levantado en el host 3 la direccion IP sería 10.0.0.3:
 
 ```
-# iperf -c 10.0.0.3
+# iperf -c 10.0.0.3 -t 1
 ```
 
 4. El resultado debería ser el siguiente:
@@ -85,13 +85,13 @@ mininet> xterm host_4
 1. En la terminal del host 1 usar el comando `iperf` en modo client UDP con la dirección IP del server en este caso 10.0.0.4, en el puerto 5001:
 
 ```
-# iperf -c 10.0.0.4 -u -p 5001
+# iperf -c 10.0.0.4 -u -p 5001 -t 1
 ```
 
 4. El resultado debería ser el siguiente:
 
 ```
-# iperf -c 10.0.0.4 -u -p 5001
+# iperf -c 10.0.0.4 -u -p 5001 -t 1
 ------------------------------------------------------------
 Client connecting to 10.0.0.4 UDP port 5001
 Sending 1470 byte datagrams, IPG target: 11215.21 us (kalman adjust)
